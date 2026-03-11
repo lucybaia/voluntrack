@@ -6,9 +6,22 @@
 
 ## Descrição do Problema Real
 
-O VolunTrack foi desenvolvido para mitigar a dificuldade de gestão em organizações sem fins lucrativos que dependem de trabalho voluntário. A dor atacada é a **vacância de turnos críticos**, onde a falta de pessoal é percebida apenas no início do expediente.
+Organizações sem fins lucrativos frequentemente enfrentam dificuldades na gestao de escalas de trabalho voluntario. A falta de visibilidade sobre quais turnos estao descobertos gera falhas operacionais que só são detectadas no momento em que o servico deveria ser prestado. Essa desorganização impacta diretamente a continuidade de atividades essenciais da instituicao.
 
-A aplicação permite cadastrar voluntários e listar quais turnos (**Manhã**, **Tarde** ou **Noite**) estão sem cobertura, permitindo que a coordenação tome medidas proativas para garantir a continuidade dos serviços prestados à sociedade.
+## Proposta da Solução
+
+O VolunTrack e uma aplicação de terminal que automatiza a gestao de escalas. O sistema permite o cadastro de voluntarios em turnos específicos e fornece uma funcionalidade de monitoramento de vacância. Ao cruzar os dados de voluntários alocados com a grade necessária, o software identifica e destaca turnos vazios, permitindo que a gestão da ONG atue rapidamente para preencher as lacunas.
+
+## Público Alvo
+
+Coordenadores de ONGs, gestores de projetos sociais e administradores de centros comunitários que dependem de mão de obra voluntária.
+
+## Funcionalidades Principais
+
+- Cadastro de voluntários com nome e turno de preferência.
+- Listagem completa de voluntários alocados.
+- Identificação automática de turnos sem cobertura (vacância).
+- Interface interativa via linha de comando para fácil acesso.
 
 ---
 
@@ -19,7 +32,7 @@ Este projeto utiliza as seguintes tecnologias, com todas as dependências declar
 | Componente | Tecnologia |
 |---|---|
 | Linguagem | Java 21 |
-| Gerenciador de Build | Maven |
+| Gerenciador de Build | Maven 3.9.x |
 | Interface | CLI (Command Line Interface) |
 | Testes Automatizados | JUnit 5 |
 | Análise Estática (Linter) | Maven Checkstyle Plugin |
@@ -27,44 +40,51 @@ Este projeto utiliza as seguintes tecnologias, com todas as dependências declar
 
 ---
 
-## Como Executar
+## Instruções de Instalação
 
-### 1. Compilar o projeto
+### 1. Certifique-se de ter o JDK 21 e o Maven configurados no sistema
+
+### 2. Clone o repositório
 
 ```powershell
-mvn clean compile
+git clone https://github.com/lucybaia/voluntrack.git
 ```
 
-### 2. Executar a aplicação
+### 3. Acesse a pasta do projeto
+
+```powershell
+cd voluntrack-app
+```
+
+### 4. Baixe as dependências e compile o projeto
 
 ```powershell
 mvn exec:java "-Dexec.mainClass=com.voluntrack.Main"
 ```
-
 ---
 
-## Qualidade e Validação
+## Instruções para rodar os testes
 
-Para garantir que o código atende aos requisitos de qualidade e testes automatizados, execute:
+### Para executar a suite de testes automatizados:
 
 ```powershell
-mvn verify
+mvn test
 ```
 
-Este comando:
-- Executa os testes unitários presentes em `EscalaServiceTest.java`
-- Realiza a análise estática de código para garantir a conformidade com as boas práticas de programação
+## Instruções para Rodar o Lint
+
+### Para executar a análise estática de código (Linting):
+
+```powershell
+mvn checkstyle:check
+```
+
+Nota: O comando mvn verify tambem executa tanto os testes quanto o linter simultaneamente.
 
 ---
 
-## Workflow de CI
+## Versão atual
+### 1.0.0
 
-O projeto conta com um workflow de **GitHub Actions** configurado em `.github/workflows/ci.yml`.
-
-A cada **push** ou **pull request** na branch principal, a pipeline executa automaticamente:
-
-1. Build do projeto
-2. Análise do linter
-3. Testes automatizados
-
-Garantindo a integridade do código antes da integração final.
+## Nome do Autor
+### Lucy Baia
