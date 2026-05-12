@@ -1,92 +1,91 @@
-# VolunTrack
+# VolunTrack 🐾
 
-**Versão:** 1.0.0
-
----
-
-## Descrição do Problema Real
-
-Organizações sem fins lucrativos frequentemente enfrentam dificuldades na gestao de escalas de trabalho voluntario. A falta de visibilidade sobre quais turnos estao descobertos gera falhas operacionais que só são detectadas no momento em que o servico deveria ser prestado. Essa desorganização impacta diretamente a continuidade de atividades essenciais da instituicao.
-
-## Proposta da Solução
-
-O VolunTrack e uma aplicação de terminal que automatiza a gestao de escalas. O sistema permite o cadastro de voluntarios em turnos específicos e fornece uma funcionalidade de monitoramento de vacância. Ao cruzar os dados de voluntários alocados com a grade necessária, o software identifica e destaca turnos vazios, permitindo que a gestão da ONG atue rapidamente para preencher as lacunas.
-
-## Público Alvo
-
-Coordenadores de ONGs, gestores de projetos sociais e administradores de centros comunitários que dependem de mão de obra voluntária.
-
-## Funcionalidades Principais
-
-- Cadastro de voluntários com nome e turno de preferência.
-- Listagem completa de voluntários alocados.
-- Identificação automática de turnos sem cobertura (vacância).
-- Interface interativa via linha de comando para fácil acesso.
+**Versão:** 2.0.0 (Etapa Intermediária)  
 
 ---
 
-## Tecnologias e Dependências
+## 🎯 Descrição do Problema Real
 
-Este projeto utiliza as seguintes tecnologias, com todas as dependências declaradas formalmente no arquivo `pom.xml`:
+Organizações sem fins lucrativos frequentemente enfrentam dificuldades na gestão de escalas. A falta de visibilidade sobre turnos descobertos gera falhas operacionais críticas. O VolunTrack resolve isso centralizando o controle e automatizando a identificação de lacunas.
 
-| Componente | Tecnologia |
-|---|---|
-| Linguagem | Java 21 |
-| Gerenciador de Build | Maven 3.9.x |
-| Interface | CLI (Command Line Interface) |
-| Testes Automatizados | JUnit 5 |
-| Análise Estática (Linter) | Maven Checkstyle Plugin |
-| CI (Integração Contínua) | GitHub Actions |
+## 🚀 Evolução: Integração com API Pública
+
+Nesta versão 2.0.0, o projeto foi integrado à **BrasilAPI**. Agora, ao cadastrar um voluntário, o sistema solicita o CEP e realiza uma consulta em tempo real para validar a localidade (Cidade/Estado).
+
+- **Endpoint utilizado:** `https://brasilapi.com.br/api/cep/v1/{cep}`
+- **Benefício:** Garante que os dados de atuação geográfica dos voluntários sejam precisos e validados oficialmente.
+
+## 👥 Público-Alvo
+
+Gestores de ONGs e coordenadores de projetos sociais.
+
+## ✨ Funcionalidades Principais
+
+- **Cadastro de voluntários** com nome e turno.
+- **Validação de Localidade:** Integração automática com BrasilAPI via CEP. *(Novo!)*
+- **Monitoramento de Vacância:** Identificação de turnos sem cobertura.
+- **Testes de Integração:** Validação automatizada da comunicação com a API externa. *(Novo!)*
 
 ---
 
-## Instruções de Instalação
+## 🛠️ Tecnologias e Dependências
 
-### 1. Certifique-se de ter o JDK 21 e o Maven configurados no sistema
+| Componente          | Tecnologia                    |
+|---------------------|-------------------------------|
+| Linguagem           | Java 21                       |
+| Gerenciador de Build | Maven                        |
+| JSON Parser         | Jackson Databind 2.17.0       |
+| Testes              | JUnit 5 (Unitários e de Integração) |
+| CI/CD               | GitHub Actions                |
 
-### 2. Clone o repositório
+---
 
-```powershell
+## 💻 Como Executar (Deploy)
+
+Como esta é uma aplicação **CLI**, o deploy consiste na disponibilidade do código funcional e documentado.
+
+### 1. Requisitos
+
+- JDK 21
+- Maven 3.9+
+
+### 2. Instalação e Execução
+
+```bash
+# Clone o repositório
 git clone https://github.com/lucybaia/voluntrack.git
-```
 
-### 3. Acesse a pasta do projeto
-
-```powershell
+# Acesse a pasta
 cd voluntrack-app
-```
 
-### 4. Baixe as dependências e compile o projeto
+# Compile e instale as dependências (Jackson, JUnit, etc.)
+mvn clean install
 
-```powershell
+# Execute a aplicação
 mvn exec:java "-Dexec.mainClass=com.voluntrack.Main"
 ```
+
 ---
 
-## Instruções para rodar os testes
+## 🧪 Testes e Qualidade
 
-### Para executar a suite de testes automatizados:
+### Executar Testes de Integração (BrasilAPI)
 
-```powershell
+Para validar se a comunicação com a API externa está funcionando:
+
+```bash
 mvn test
 ```
 
-## Instruções para Rodar o Lint
+### Executar Análise Estática (Lint)
 
-### Para executar a análise estática de código (Linting):
-
-```powershell
+```bash
 mvn checkstyle:check
 ```
 
-Nota: O comando mvn verify tambem executa tanto os testes quanto o linter simultaneamente.
-
 ---
 
-## Versão atual
-### 1.0.0
+## 👤 Autora
 
-## Nome do Autor
-### Lucy Baia
-
-### Link do repositório público: https://github.com/lucybaia/voluntrack
+**Lucy Baia** — [GitHub](https://github.com/lucybaia)  
+🔗 **Repositório:** [https://github.com/lucybaia/voluntrack](https://github.com/lucybaia/voluntrack)
